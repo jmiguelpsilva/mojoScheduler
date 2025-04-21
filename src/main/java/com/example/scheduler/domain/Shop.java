@@ -1,10 +1,8 @@
 package com.example.scheduler.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.util.List;
 
 @Entity
@@ -15,15 +13,14 @@ import java.util.List;
 public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-    String name;
+    private Long id;
+    @NonNull
+    private String name;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    Address address;
+    private Address address;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    List<Employee> employees;
+    private List<Employee> employees;
 
-    String phoneNumber;
-    String email;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    Employee manager;
+    private String phoneNumber;
+    private String email;
 }
